@@ -1,0 +1,59 @@
+<div class="login-container">
+  <div class="switch-buttons">
+    <button (click)="switchToLogin()" [disabled]="isLogin">Вход</button>
+    <button (click)="switchToRegister()" [disabled]="!isLogin">Регистрация</button>
+  </div>
+
+  <form *ngIf="isLogin" class="form-box" [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+    <h2>Вход</h2>
+    <div>
+      <label>Email</label>
+      <input formControlName="userEmail" type="email" />
+      <div *ngIf="loginForm.controls['userEmail'].invalid && loginForm.controls['userEmail'].touched">
+        <div class="alert">Не указан email</div>
+      </div>
+    </div>
+    <div>
+      <label>Пароль</label>
+      <input formControlName="userPassword" type="password" />
+      <div *ngIf="loginForm.controls['userPassword'].invalid && loginForm.controls['userPassword'].touched">
+        <div class="alert">Не указан пароль</div>
+      </div>
+    </div>
+    <button [disabled]="loginForm.invalid">Войти</button>
+  </form>
+
+  <form *ngIf="!isLogin" class="form-box" [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+    <h2>Регистрация</h2>
+    <div>
+      <label>Имя</label>
+      <input formControlName="userName" />
+      <div *ngIf="registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched">
+        <div class="alert">Не указано имя</div>
+      </div>
+    </div>
+    <div>
+      <label>Email</label>
+      <input formControlName="userEmail" type="email" />
+      <div *ngIf="registerForm.controls['userEmail'].invalid && registerForm.controls['userEmail'].touched">
+        <div class="alert">Не указан email</div>
+      </div>
+    </div>
+    <div>
+      <label>Телефон</label>
+      <input formControlName="userPhone" />
+      <div *ngIf="registerForm.controls['userPhone'].invalid && registerForm.controls['userPhone'].touched">
+        <div class="alert">Не указан телефон</div>
+      </div>
+    </div>
+    <div>
+      <label>Пароль</label>
+      <input formControlName="userPassword" type="password" />
+      <div *ngIf="registerForm.controls['userPassword'].invalid && registerForm.controls['userPassword'].touched">
+        <div class="alert">Не указан пароль</div>
+      </div>
+    </div>
+    <button [disabled]="registerForm.invalid">Зарегистрироваться</button>
+  </form>
+
+

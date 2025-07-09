@@ -1,0 +1,76 @@
+<div *ngIf="showModal" class="modal-backdrop" (click)="onCloseModal()">
+  <div class="custom-modal main-modal" (click)="$event.stopPropagation()">
+    <div class="main-modal-content">
+      
+      <div class="modal-header">
+        <span class="modal-location">
+          <span class="modal-location-icon">📦</span>
+          <span style="font-weight:600; color:#222">г. Таганрог, ул. Сергея Шило 200</span>
+        </span>
+      </div>
+      
+      <div class="modal-search">
+        <input type="text" placeholder="🔍 Поиск по каталогу..." />
+      </div>
+      
+      <div class="modal-actions">
+        <button class="modal-action"><span class="modal-action-icon">🛍️</span>Каталог</button>
+        <button class="modal-action"><span class="modal-action-icon">💳</span>Подписки</button>
+        <button class="modal-action"><span class="modal-action-icon">🎁</span>Скидки и акции</button>
+        <button class="modal-action"><span class="modal-action-icon">🕒</span>Вы заказывали</button>
+      </div>
+      
+      <div class="modal-section-title" style="color:#1990df; letter-spacing:0.5px;"> Лучшее предложение</div>
+      <div class="modal-best-offer-carousel">
+        <button class="carousel-arrow left" (click)="prevBestOffer($event)">&#8592;</button>
+        <div class="modal-best-offer" *ngIf="bestOffers && bestOffers.length">
+          <div class="modal-best-offer-info">
+            <div class="modal-best-offer-price" style="color:#1990df;">{{ bestOffers[bestOfferIndex].price }} ₽</div>
+            <div class="modal-best-offer-title" [innerHTML]="bestOffers[bestOfferIndex].title"></div>
+            <div class="modal-best-offer-desc">{{ bestOffers[bestOfferIndex].desc }}</div>
+          </div>
+          <img [src]="bestOffers[bestOfferIndex].img" alt="Вода" class="modal-best-offer-img">
+          <button class="modal-best-offer-plus"></button>
+        </div>
+        <button class="carousel-arrow right" (click)="nextBestOffer($event)">&#8594;</button>
+      </div>
+      
+      <div class="modal-section-title" style="margin-top:18px; color:#1990df; letter-spacing:0.5px;"> Популярные товары</div>
+      <div class="modal-popular">
+        <div class="modal-popular-item">
+          <img src="assets/images/shihka.jpg" alt="Вода" />
+          <button class="modal-popular-plus"></button>
+          <div class="modal-popular-price">115 ₽</div>
+          <div class="modal-popular-title">Вода<br>«Шишкин»</div>
+        </div>
+        <div class="modal-popular-item">
+          <img src="assets/images/bezgaza.jpg" alt="Вода" />
+          <div class="modal-popular-price">76 ₽</div>
+          <div class="modal-popular-title">Вода<br>негазированая</div>
+          <button class="modal-popular-plus"></button>
+        </div>
+        <div class="modal-popular-item">
+          <img src="assets/images/kalinov.jpg" alt="Вода" />
+          <div class="modal-popular-price">90 ₽</div>
+          <div class="modal-popular-title">Вода детская<br>«Калинов»</div>
+          <button class="modal-popular-plus"></button>
+        </div>
+      </div>
+      
+      <div class="modal-bottom-menu">
+        <button class="modal-bottom-menu-btn active">
+          <span>🏠</span>
+          <div>Главная</div>
+        </button>
+        <button class="modal-bottom-menu-btn">
+          <span>🛒</span>
+          <div>Корзина</div>
+        </button>
+        <button class="modal-bottom-menu-btn">
+          <span>👤</span>
+          <div>Профиль</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

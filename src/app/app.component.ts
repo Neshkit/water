@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'woter';
+  showModal = false;
+
+  openModal() {
+    console.log('Открытие модалки!');
+    this.showModal = true;
+  }
+
+  closeModal() {
+    console.log('Закрытие модалки!');
+    this.showModal = false;
+  }
 }
